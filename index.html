@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talento nica</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        header {
+            background: #1769aa;
+            color: white;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 {
+            font-size: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            color: #bde3ff;
+        }
+
+        .hero {
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #1769aa, #42a5f5);
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h2 {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            border: none;
+            padding: 13px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 15px;
+            margin: 5px;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #1769aa;
+        }
+
+        .btn-primary:hover {
+            background: #e5f3ff;
+        }
+
+        .btn-blue {
+            background: #1769aa;
+            color: white;
+        }
+
+        .btn-blue:hover {
+            background: #0d4f82;
+        }
+
+        section {
+            padding: 60px 8%;
+        }
+
+        .titulo {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .titulo h2 {
+            font-size: 32px;
+            color: #1769aa;
+            margin-bottom: 10px;
+        }
+
+        .titulo p {
+            color: #666;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+            color: #1769aa;
+        }
+
+        .formulario {
+            background: white;
+            max-width: 700px;
+            margin: auto;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            font-size: 15px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .oportunidades {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .oportunidad {
+            background: rgb(222, 213, 213);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 5px solid #1769aa;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .oportunidad h3 {
+            color: #1769aa;
+            margin-bottom: 10px;
+        }
+
+        .etiqueta {
+            display: inline-block;
+            background: #e3f2fd;
+            color: #1769aa;
+            padding: 6px 10px;
+            border-radius: 15px;
+            margin: 5px 3px;
+            font-size: 13px;
+        }
+
+        .coincidencia {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #159447;
+        }
+
+        .buscar {
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        footer {
+            background: #12344d;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .mensaje {
+            display: none;
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 7px;
+            background: #d9f8e4;
+            color: #126b35;
+            font-weight: bold;
+        }
+
+        @media(max-width: 700px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 5px;
+                font-size: 13px;
+            }
+
+            .hero h2 {
+                font-size: 35px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🚀 homegrown talent</h1>
+
+    <nav>
+        <a onclick="irA('inicio')">Inicio</a>
+        <a onclick="irA('habilidades')">Habilidades</a>
+        <a onclick="irA('oportunidades')">Oportunidades</a>
+        <a onclick="irA('registro')">Registrarse</a>
+    </nav>
+</header>
+
+
+<!-- INICIO -->
+<section class="hero" id="inicio">
+
+    <div class="hero-content">
+
+        <h2>Conecta tus habilidades y talentos a nuevas oportunidades</h2>
+
+        <p>
+            plataforma para conectar a jóvenes con habilidades y talentos unicos
+            con personas y negocios que necesitan sus servicios.
+        </p>
+
+        <button class="btn btn-primary" onclick="irA('registro')">
+            ofrece tus capacidades!
+        </button>
+
+        <button class="btn btn-primary" onclick="irA('necesidad')">
+            Necesitas un servicio ?
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- HABILIDADES -->
+<section id="habilidades">
+
+    <div class="titulo">
+
+        <h2>💡 Habilidades que puedes ofrecer</h2>
+
+        <p>
+            Encuentra oportunidades de acuerdo con tus conocimientos.
+        </p>
+
+    </div>
+
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="icon">💻</div>
+            <h3>Tecnología</h3>
+            <p>Programación, páginas web, soporte técnico y aplicaciones.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🎨</div>
+            <h3>Diseño</h3>
+            <p>Logos, publicidad, edición de fotografías y videos.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🌎</div>
+            <h3>Idiomas</h3>
+            <p>Inglés, español, traducciones y clases particulares.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">📱</div>
+            <h3>Redes sociales</h3>
+            <p>Creación de contenido y administración de redes sociales.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🔧</div>
+            <h3>Reparaciones</h3>
+            <p>Computadoras, celulares, equipos electrónicos y más.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">📚</div>
+            <h3>Tutorías</h3>
+            <p>Matemáticas, programación, idiomas y apoyo escolar.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- OPORTUNIDADES -->
+<section id="oportunidades">
+
+    <div class="titulo">
+
+        <h2>🔥 Oportunidades disponibles</h2>
+
+        <p>
+            Encuentra personas que necesitan tus habilidades.
+        </p>
+
+    </div>
+
+
+    <div class="buscar">
+
+        <input
+            type="text"
+            id="busqueda"
+            placeholder="🔎 Buscar por habilidad..."
+            onkeyup="buscarOportunidad()"
+        >
+
+    </div>
+
+
+    <div class="oportunidades" id="listaOportunidades">
+
+        <div class="oportunidad" data-habilidad="diseño">
+
+            <h3>🎨 Necesito un diseñador</h3>
+
+            <p>
+                Necesito crear un logo para un pequeño negocio.
+            </p>
+
+            <br>
+
+            <span class="etiqueta">Diseño gráfico</span>
+            <span class="etiqueta">Logo</span>
+
+            <p class="coincidencia">
+                ⭐ 95% de coincidencia
+            </p>
+
+            <button class="btn btn-blue" onclick="contactar('Diseño gráfico')">
+                Me interesa
+            </button>
+
+        </div>
+
+
+        <div class="oportunidad" data-habilidad="programacion">
+
+            <h3>💻 Página web</h3>
+
+            <p>
+                Un negocio necesita una página web sencilla.
+            </p>
+
+            <br>
+
+            <span class="etiqueta">HTML</span>
+            <span class="etiqueta">CSS</span>
+            <span class="etiqueta">JavaScript</span>
+
+            <p class="coincidencia">
+                ⭐ 90% de coincidencia
+            </p>
+
+            <button class="btn btn-blue" onclick="contactar('Programación')">
+                Me interesa
+            </button>
+
+        </div>
+
+
+        <div class="oportunidad" data-habilidad="ingles">
+
+            <h3>🌎 Clases de inglés</h3>
+
+            <p>
+                Una persona busca un joven que pueda ayudarle
+                a practicar inglés.
+            </p>
+
+            <br>
+
+            <span class="etiqueta">Inglés</span>
+            <span class="etiqueta">Tutoría</span>
+
+            <p class="coincidencia">
+                ⭐ 85% de coincidencia
+            </p>
+
+            <button class="btn btn-blue" onclick="contactar('Inglés')">
+                Me interesa
+            </button>
+
+        </div>
+
+
+        <div class="oportunidad" data-habilidad="computadoras">
+
+            <h3>🔧 Reparación de computadora</h3>
+
+            <p>
+                Necesito ayuda para instalar programas
+                y configurar una computadora.
+            </p>
+
+            <br>
+
+            <span class="etiqueta">Computadoras</span>
+            <span class="etiqueta">Soporte técnico</span>
+
+            <p class="coincidencia">
+                ⭐ 88% de coincidencia
+            </p>
+
+            <button class="btn btn-blue" onclick="contactar('Soporte técnico')">
+                Me interesa
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- REGISTRO -->
+<section id="registro">
+
+    <div class="titulo">
+
+        <h2>👨‍🎓 Registra tu talento</h2>
+
+        <p>
+            Crea tu perfil y muestra las habilidades que tienes.
+        </p>
+
+    </div>
+
+
+    <div class="formulario">
+
+        <div class="form-group">
+
+            <label>Nombre completo</label>
+
+            <input
+                type="text"
+                id="nombre"
+                placeholder="Escribe tu nombre"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Edad</label>
+
+            <input
+                type="number"
+                id="edad"
+                placeholder="Ejemplo: 20"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Habilidad principal</label>
+
+            <select id="habilidad">
+
+                <option value="">Selecciona una habilidad</option>
+
+                <option>Programación</option>
+                <option>Diseño gráfico</option>
+                <option>Inglés</option>
+                <option>Redes sociales</option>
+                <option>Reparación de computadoras</option>
+                <option>Tutorías</option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Describe tus habilidades</label>
+
+            <textarea
+                id="descripcion"
+                placeholder="Cuéntanos qué sabes hacer..."
+            ></textarea>
+
+        </div>
+
+
+        <button class="btn btn-blue" onclick="registrar()">
+            Crear perfil
+        </button>
+
+
+        <div class="mensaje" id="mensajeRegistro">
+            ✅ ¡Perfil registrado correctamente!
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- NECESIDAD -->
+<section id="necesidad">
+
+    <div class="titulo">
+
+        <h2>📢 Publicar una necesidad</h2>
+
+        <p>
+            ¿Necesitas ayuda? Publica lo que necesitas y encuentra jóvenes.
+        </p>
+
+    </div>
+
+
+    <div class="formulario">
+
+        <div class="form-group">
+
+            <label>¿Qué necesitas?</label>
+
+            <input
+                type="text"
+                id="servicio"
+                placeholder="Ejemplo: Necesito un logo"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Categoría</label>
+
+            <select id="categoria">
+
+                <option>Programación</option>
+                <option>Diseño gráfico</option>
+                <option>Inglés</option>
+                <option>Redes sociales</option>
+                <option>Reparaciones</option>
+                <option>Tutorías</option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Descripción</label>
+
+            <textarea
+                id="descripcionServicio"
+                placeholder="Explica qué necesitas..."
+            ></textarea>
+
+        </div>
+
+
+        <button class="btn btn-blue" onclick="publicarNecesidad()">
+            Publicar necesidad
+        </button>
+
+
+        <div class="mensaje" id="mensajeNecesidad">
+            ✅ ¡Necesidad publicada correctamente!
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <h3>🚀 homegrown talent</h3>
+
+    <p>
+        Conectando jóvenes, habilidades y oportunidades.
+    </p>
+
+    <br>
+
+    <p>
+        © 2026 homegrown talent
+    </p>
+
+</footer>
+
+
+<script>
+
+    // Moverse por las secciones
+    function irA(seccion) {
+
+        document.getElementById(seccion).scrollIntoView({
+            behavior: "smooth"
+        });
+
+    }
+
+
+    // Registrar joven
+    function registrar() {
+
+        let nombre = document.getElementById("nombre").value;
+        let edad = document.getElementById("edad").value;
+        let habilidad = document.getElementById("habilidad").value;
+        let descripcion = document.getElementById("descripcion").value;
+
+        if (
+            nombre === "" ||
+            edad === "" ||
+            habilidad === "" ||
+            descripcion === ""
+        ) {
+
+            alert("⚠️ Por favor completa todos los campos.");
+
+            return;
+        }
+
+
+        document.getElementById("mensajeRegistro").style.display = "block";
+
+
+        alert(
+            "¡Bienvenido " +
+            nombre +
+            "! Tu perfil de " +
+            habilidad +
+            " ha sido registrado."
+        );
+
+
+        document.getElementById("nombre").value = "";
+        document.getElementById("edad").value = "";
+        document.getElementById("habilidad").value = "";
+        document.getElementById("descripcion").value = "";
+
+    }
+
+
+    // Publicar necesidad
+    function publicarNecesidad() {
+
+        let servicio = document.getElementById("servicio").value;
+        let categoria = document.getElementById("categoria").value;
+        let descripcion = document.getElementById("descripcionServicio").value;
+
+
+        if (
+            servicio === "" ||
+            descripcion === ""
+        ) {
+
+            alert("⚠️ Completa todos los campos.");
+
+            return;
+        }
+
+
+        document.getElementById("mensajeNecesidad").style.display = "block";
+
+
+        alert(
+            "✅ Tu necesidad fue publicada en la categoría: " +
+            categoria
+        );
+
+
+        document.getElementById("servicio").value = "";
+        document.getElementById("descripcionServicio").value = "";
+
+    }
+
+
+    // Buscar oportunidades
+    function buscarOportunidad() {
+
+        let texto =
+            document
+            .getElementById("busqueda")
+            .value
+            .toLowerCase();
+
+
+        let oportunidades =
+            document.querySelectorAll(".oportunidad");
+
+
+        oportunidades.forEach(function(oportunidad) {
+
+            let contenido =
+                oportunidad.innerText.toLowerCase();
+
+
+            if (contenido.includes(texto)) {
+
+                oportunidad.style.display = "block";
+
+            } else {
+
+                oportunidad.style.display = "none";
+
+            }
+
+        });
+
+    }
+
+
+    // Botón me interesa
+    function contactar(habilidad) {
+
+        alert(
+            "🎉 ¡Excelente!\n\n" +
+            "Has mostrado interés en una oportunidad de " +
+            habilidad +
+            ".\n\n" +
+            "Próximamente podrás contactar directamente con la persona."
+        );
+
+    }
+
+</script>
+
+</body>
+</html>
